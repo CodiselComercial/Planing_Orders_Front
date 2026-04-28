@@ -2,7 +2,9 @@ export interface User {
   id: string
   name: string
   email: string
-  createdAt: string
+  perfilId?: string
+  comedorId?: string
+  createdAt?: string
 }
 
 export interface AuthTokens {
@@ -19,4 +21,6 @@ export interface RegisterPayload {
   name: string
   email: string
   password: string
+  perfilId: string
+  comedorId: string
 }

@@ -54,7 +54,7 @@ export function useLogout() {
   const logout = useAuthStore((state) => state.logout)
   return useMutation({
     mutationFn: () => authApi.logout(),
-    onSuccess: () => {
+    onSettled: () => {
       logout()
       window.location.href = '/login'
     },

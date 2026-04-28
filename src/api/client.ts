@@ -2,7 +2,8 @@ import axios, { type AxiosInstance, type InternalAxiosRequestConfig, type AxiosR
 import { useAuthStore } from '@/store/authStore'
 import toast from 'react-hot-toast'
 
-const BASE_URL = import.meta.env.DEV ? '/api' : 'http://localhost:3000'
+
+const BASE_URL =  'http://localhost:3000'
 
 function normalizeAuthTokens(data: any) {
   const payload = data?.data ?? data

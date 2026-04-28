@@ -4,9 +4,9 @@ import { AppShell } from '@/components/layout/AppShell'
 import LoginPage from '@/features/auth/pages/LoginPage'
 import RegisterPage from '@/features/auth/pages/RegisterPage'
 import DashboardPage from '@/features/dashboard/pages/DashboardPage'
-import RecipesPage from '@/features/recipes/pages/RecipesPage'
-import ProvidersPage from '@/features/providers/pages/ProvidersPage'
-import SuppliesPage from '@/features/supplies/pages/SuppliesPage'
+import ReportsPage from '@/features/reports/pages/ReportsPage'
+import { GenericCrudPage } from '@/features/crud/GenericCrudPage'
+import { crudResources } from '@/features/crud/crudResources'
 
 export const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> },
@@ -18,9 +18,11 @@ export const router = createBrowserRouter([
         element: <AppShell />,
         children: [
           { path: '/', element: <DashboardPage /> },
-          { path: '/recipes', element: <RecipesPage /> },
-          { path: '/providers', element: <ProvidersPage /> },
-          { path: '/supplies', element: <SuppliesPage /> },
+          { path: '/reports', element: <ReportsPage /> },
+          ...crudResources.map((resource) => ({
+            path: resource.route,
+            element: <GenericCrudPage resource={resource} />,
+          })),
         ],
       },
     ],
