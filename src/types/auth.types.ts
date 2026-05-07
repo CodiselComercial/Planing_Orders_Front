@@ -21,6 +21,4 @@ export interface RegisterPayload {
   name: string
   email: string
   password: string
-  perfilId: string
-  comedorId: string
 }

@@ -19,9 +19,7 @@ curl -X POST http://localhost:3000/auth/register \
   -d '{
     "name": "Juan Perez",
     "email": "juan@example.com",
-    "password": "Secret123!",
-    "perfilId": "<PERFIL_UUID>",
-    "comedorId": "<COMEDOR_UUID>"
+    "password": "Secret123!"
   }'
 ```
 
@@ -32,9 +30,7 @@ curl -X POST http://localhost:3000/auth/register \
   "user": {
     "id": "<USER_UUID>",
     "name": "Juan Perez",
-    "email": "juan@example.com",
-    "perfilId": "<PERFIL_UUID>",
-    "comedorId": "<COMEDOR_UUID>"
+    "email": "juan@example.com"
   },
   "access_token": "<JWT>",
   "refresh_token": "<JWT>"

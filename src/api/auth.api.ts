@@ -12,7 +12,8 @@ export const authApi = {
   },
 
   register: async (payload: RegisterPayload): Promise<AuthTokens & { user: User }> => {
-    const { data } = await apiClient.post('/auth/register', payload)
+    const { name, email, password } = payload
+    const { data } = await apiClient.post('/auth/register', { name, email, password })
     return unwrapResponse<AuthTokens & { user: User }>(data)
   },
 

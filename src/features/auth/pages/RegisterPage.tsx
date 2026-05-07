@@ -3,15 +3,10 @@ import { motion } from 'framer-motion'
 import { ArrowLeft } from 'lucide-react'
 import { RegisterForm } from '@/features/auth/components/RegisterForm'
 import { useRegister } from '@/features/auth/hooks/useAuth'
-import { useCrudList } from '@/features/crud/useCrudResource'
 
 export default function RegisterPage() {
   const registerMutation = useRegister()
   const navigate = useNavigate()
-  const perfilsQuery = useCrudList('/perfils')
-  const comedorsQuery = useCrudList('/comedors')
-  const perfils = (perfilsQuery.data ?? []) as Array<{ id: string; name?: string }>
-  const comedors = (comedorsQuery.data ?? []) as Array<{ id: string; nombre?: string }>
 
   return (
     <div className="min-h-screen bg-[#EFF8F2] px-4 py-10 sm:px-6 lg:px-8">
@@ -48,8 +43,6 @@ export default function RegisterPage() {
           <RegisterForm
             onSubmit={(values) => registerMutation.mutate(values)}
             isLoading={registerMutation.status === 'pending'}
-            perfils={perfils}
-            comedors={comedors}
           />
           <p className="mt-6 text-sm text-text-muted">
             ¿Ya eres miembro?{' '}
