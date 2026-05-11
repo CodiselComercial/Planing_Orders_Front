@@ -244,6 +244,30 @@ export function GenericCrudPage({ resource }: { resource: CrudResourceConfig }) 
               )
             }
 
+            if (field.options) {
+              return (
+                <label key={field.key} className="space-y-2 text-sm text-text-muted">
+                  <span className="font-medium text-text">{field.label}</span>
+                  <select
+                    value={String(formValues[field.key] ?? '')}
+                    onChange={(event) => {
+                      setFormValues((prev) => ({ ...prev, [field.key]: event.target.value }))
+                      setFormErrors((prev) => ({ ...prev, [field.key]: '' }))
+                    }}
+                    className={baseInputClass}
+                  >
+                    <option value="">Selecciona una opcion</option>
+                    {field.options.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                  {formErrors[field.key] ? <p className="text-xs text-[#F03E3E]">{formErrors[field.key]}</p> : null}
+                </label>
+              )
+            }
+
             return (
               <Input
                 key={field.key}

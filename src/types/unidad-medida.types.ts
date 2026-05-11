@@ -3,7 +3,7 @@ export interface UnidadMedida {
   tipo: string
   descripcion: string
   multiplicador: number
-  comedorId: string
+  comedorId?: string
   createdAt?: string
   updatedAt?: string
 }
@@ -12,7 +12,7 @@ export interface CreateUnidadMedidaPayload {
   tipo: string
   descripcion: string
   multiplicador: number
-  comedorId: string
+  comedorId?: string
 }
 
 export type UpdateUnidadMedidaPayload = Partial<CreateUnidadMedidaPayload>

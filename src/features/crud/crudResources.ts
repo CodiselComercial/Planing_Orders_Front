@@ -8,6 +8,7 @@ export interface CrudFieldConfig {
   relationEndpoint?: string
   relationLabelKey?: string
   relationValueKey?: string
+  options?: string[]
 }
 
 export interface CrudResourceConfig {
@@ -179,17 +180,9 @@ export const crudResources: CrudResourceConfig[] = [
     route: '/unidades-medida',
     endpoint: '/unidades-medida',
     fields: [
-      { key: 'tipo', label: 'Tipo', type: 'text', required: true },
+      { key: 'tipo', label: 'Tipo', type: 'text', required: true, options: ['Cantidad', 'Peso', 'Volumen', 'Otro'] },
       { key: 'descripcion', label: 'Descripcion', type: 'text', required: true },
       { key: 'multiplicador', label: 'Multiplicador', type: 'number', required: true },
-      {
-        key: 'comedorId',
-        label: 'Comedor',
-        type: 'text',
-        required: true,
-        relationEndpoint: '/comedors',
-        relationLabelKey: 'nombre',
-      },
     ],
   },
   {

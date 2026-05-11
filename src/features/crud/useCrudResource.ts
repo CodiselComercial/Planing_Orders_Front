@@ -26,7 +26,10 @@ export function useCreateCrudItem(endpoint: string) {
       const response = await apiClient.post(endpoint, payload)
       return unwrapApiResponse<CrudItem>(response)
     },
-    onSuccess: () => {
+    onSuccess: (createdItem) => {
+      queryClient.setQueryData<CrudItem[]>(['crud-resource', endpoint], (current) =>
+        current ? [...current, createdItem] : [createdItem]
+      )
       queryClient.invalidateQueries({ queryKey: ['crud-resource', endpoint] })
       toast.success('Registro creado')
     },
@@ -40,7 +43,12 @@ export function useUpdateCrudItem(endpoint: string) {
       const response = await apiClient.patch(`${endpoint}/${id}`, payload)
       return unwrapApiResponse<CrudItem>(response)
     },
-    onSuccess: () => {
+    onSuccess: (updatedItem) => {
+      queryClient.setQueryData<CrudItem[]>(['crud-resource', endpoint], (current) =>
+        current
+          ? current.map((item) => (item.id === updatedItem.id ? updatedItem : item))
+          : [updatedItem]
+      )
       queryClient.invalidateQueries({ queryKey: ['crud-resource', endpoint] })
       toast.success('Registro actualizado')
     },
