@@ -16,6 +16,7 @@ export const ROUTES = {
   ordenCompraItems: '/orden-compra-items',
   auditoriaEventos: '/auditoria-eventos',
   reporteCostosCrud: '/reporte-costos',
+  profile: '/profile',
   login: '/login',
   register: '/register',
 }

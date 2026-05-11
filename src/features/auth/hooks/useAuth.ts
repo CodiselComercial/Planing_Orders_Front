@@ -60,3 +60,14 @@ export function useLogout() {
     },
   })
 }
+
+export function useChangePassword() {
+  const setUser = useAuthStore((state) => state.setUser)
+  return useMutation({
+    mutationFn: (payload: { currentPassword: string; newPassword: string }) => authApi.changePassword(payload),
+    onSuccess: (updatedUser) => {
+      setUser(updatedUser)
+      toast.success('Contraseña cambiada exitosamente')
+    },
+  })
+}

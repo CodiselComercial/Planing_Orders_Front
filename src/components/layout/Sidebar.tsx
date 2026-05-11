@@ -10,6 +10,7 @@ const navGroups = [
     icon: LayoutDashboard,
     items: [
       { label: 'Dashboard', path: ROUTES.dashboard },
+      { label: 'Perfil', path: ROUTES.profile },
     ],
   },
   {

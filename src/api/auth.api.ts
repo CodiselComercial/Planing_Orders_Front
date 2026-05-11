@@ -29,4 +29,9 @@ export const authApi = {
     )
     return unwrapResponse<AuthTokens>(data)
   },
+
+  changePassword: async (payload: { currentPassword: string; newPassword: string }): Promise<User> => {
+    const { data } = await apiClient.patch('/users/me', payload)
+    return unwrapResponse<User>(data)
+  },
 }

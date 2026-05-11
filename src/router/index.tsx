@@ -3,6 +3,7 @@ import { ProtectedRoute } from './ProtectedRoute'
 import { AppShell } from '@/components/layout/AppShell'
 import LoginPage from '@/features/auth/pages/LoginPage'
 import RegisterPage from '@/features/auth/pages/RegisterPage'
+import ProfilePage from '@/features/auth/pages/ProfilePage'
 import DashboardPage from '@/features/dashboard/pages/DashboardPage'
 import ReportsPage from '@/features/reports/pages/ReportsPage'
 import { GenericCrudPage } from '@/features/crud/GenericCrudPage'
@@ -19,6 +20,7 @@ export const router = createBrowserRouter([
         children: [
           { path: '/', element: <DashboardPage /> },
           { path: '/reports', element: <ReportsPage /> },
+          { path: '/profile', element: <ProfilePage /> },
           ...crudResources.map((resource) => ({
             path: resource.route,
             element: <GenericCrudPage resource={resource} />,
